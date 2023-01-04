@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>afficher les catégories sportives</title>
+{% endblock %}
+
+{% block body %}
+<h1 class="title">Suppression d'une catégorie sportive impossible</h1>
+    <p>Il reste {{ sport_count }} sports dans cette catégorie</p>
+<br><br>
+<div class="bbox">
+    <section>
+      {% if types_sports | length > 0 %}
+        <div class="inner">
+            <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">{{ types_sports[0].libelle }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for sport in sports %}
+                        <tr>
+                            <td>
+                                Nom : {{ sport.nom_sport }} - Nombre d'inscrit : {{ sport.nb_pratiquants }}
+                                <a class="btn btn-outline-danger" href="/type-sport/error_del?id_sport={{ sport.id_sport }}&id_type_sport={{ types_sports[0].id_type_sport }}">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+                <div>
+                      <p>Aucun sport à afficher.</p>
+               </div>
+        {% endif %}
+        </section>
+    </div>
+{% endblock %}

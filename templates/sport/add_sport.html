@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>Ajouter un sport</title>
+{% endblock %}
+
+{% block body %}
+  <h1 class="title">Ajout d'un sport</h1>
+  {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+  {% endif %}
+    <div class="box-add">
+        <form method="post" action="/sport/add">
+            <fieldset>
+                <legend> Ajouter un sport</legend>
+                <div class="form-group">
+                    <label for="nomSport">Nom du sport</label>
+                    <input type="text" class="form-control" id="nomSport" name="nomSport" placeholder="Football" required>
+                </div>
+                <div class="form-group">
+                    <label for="typeSport_id">Catégorie:</label>
+                        <select id="typeSport_id" name="typeSport_id" class="form-select" aria-label="Default select example" required>
+                          <option selected disabled="disabled" value="">Selectionner une catégorie</option>
+                        {% for type in types_sports %}
+                            <option style="color: black" value="{{ type.id_type_sport }}">{{ type.libelle }}</option>
+                        {% endfor %}
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label for="prixInscription">prix d'inscription:</label>
+                    <input type="number" class="form-control" id="prixInscription" name="prixInscription" placeholder="XX €" required>
+                </div>
+                    <div class="form-group">
+                    <label for="dateLimiteInscription">Date limite d'inscription:</label>
+                    <input type="date" class="form-control" id="dateLimiteInscription" name="dateLimiteInscription" required>
+                </div>
+                <div class="form-group">
+                    <label for="nbPratiquant">Nombre de pratiquant</label>
+                    <input type="number" class="form-control" id="nbPratiquant" name="nbPratiquant" placeholder="XXX pratiquant" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">Ajouter une illustration:</label>
+                    <input type="file" class="form-control" id="image" name="image" required>
+                </div>
+                    <div class="col-auto" style="text-align: center; margin-top: 30px;">
+                        <button type="submit" class="btn btn-primary mb-2">Ajouter</button>
+                    </div>
+            </fieldset>
+        </form>
+    </div>
+
+{% endblock %}

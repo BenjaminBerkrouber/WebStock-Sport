@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>modifier un type d'article</title>
+{% endblock %}
+
+{% block body %}
+  <h1 class="title">modifier une catégorie sportive</h1>
+  {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+  {% endif %}
+    <div class="box-add">
+        <form method="post" action="/type-sport/edit">
+            <fieldset>
+                <legend> Modifier une catégorie sportive</legend>
+                <input type="hidden" class="form-control" id="id" name="id" value="{{ type_sport.id_type_sport }}">
+                <div class="form-group">
+                    <label for="libelle">Nom catégorie</label>
+                    <input type="text" class="form-control" id="libelle" name="libelle" value="{{ type_sport.libelle }}" required>
+                </div>
+                    <div class="col-auto" style="text-align: center; margin-top: 30px;">
+                        <button type="submit" class="btn btn-primary mb-2">Modifié</button>
+                    </div>
+            </fieldset>
+        </form>
+    </div>
+{% endblock %}

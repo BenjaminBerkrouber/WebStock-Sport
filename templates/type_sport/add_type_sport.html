@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>ajouter une Catégorie sportive</title>
+{% endblock %}
+
+{% block body %}
+  <h1 class="title">ajout d'une catégorie sportive</h1>
+  {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+  {% endif %}
+
+<div class="box-add">
+        <form method="post" action="/type-sport/add">
+            <fieldset>
+                <legend> Crée une catégorie Sportive</legend>
+                <div class="form-group">
+                    <label for="libelle">Nom de la catégorie</label>
+                    <input type="text" class="form-control" id="libelle" name="libelle" placeholder="Sport de combat" required>
+                </div>
+                <div class="col-auto" style="text-align: center; margin-top: 30px;">
+                    <button type="submit" class="btn btn-primary mb-2">Ajouter</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+{% endblock %}

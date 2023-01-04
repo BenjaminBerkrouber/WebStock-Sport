@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>afficher les catégorie sportive</title>
+{% endblock %}
+
+{% block body %}
+<h1 class="title">Etat</h1>
+
+<br><br>
+<div class="bbox">
+    <section>
+      {% if results | length >= 1 %}
+          <h2>Revenus totale des inscriptions : <em> {{ result_tot[0]['total_inscription']}} €</em> , pour <em> {{ result_tot[0]['total_pratiquant'] }} </em> pratiquant</h2>
+          <br>
+        <div class="inner">
+            <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom catégorie</th>
+                            <th scope="col">(id)</th>
+                            <th scope="col">Nombre de sport</th>
+                            <th scope="col">totale des inscription </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for result in results %}
+                        <tr>
+                            <td>{{ result.libelle }}</td>
+                            <td>{{ result.id_type_sport }}</td>
+                            <td>
+                                <em>
+                                {% if result.type_sport_count == 0 %}
+                                    Aucun sport
+                                {% else %}
+                                    {{ result.type_sport_count }}
+                                {% endif %}
+                                </em>
+                            </td>
+                            <td>
+                                <em>
+                                {% if result.total_inscription_by_cat%}
+                                    {{ result.total_inscription_by_cat }}€
+                                {% else %}
+                                    0€
+                                {% endif %}
+                                </em>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+                <div>
+                      <p>
+                          pas de type de sport
+                      </p>
+               </div>
+        {% endif %}
+        </section>
+    </div>
+{% endblock %}

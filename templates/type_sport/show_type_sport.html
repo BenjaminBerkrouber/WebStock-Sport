@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>afficher les catégorie sportive</title>
+{% endblock %}
+
+{% block body %}
+<h1 class="title">Catégorie Sportive</h1>
+    <div class="box-btn-add">
+        <a class="btn btn-outline-success" href="/type-sport/add">ajouter une catégorie sportive</a>
+    </div>
+<br><br>
+<div class="bbox">
+    <section>
+      {% if results | length >= 1 %}
+        <div class="inner">
+            <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom catégorie</th>
+                            <th scope="col">(id)</th>
+                            <th scope="col">Nombre de sport</th>
+                            <th scope="col">opération</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for result in results %}
+                        <tr>
+                            <td>{{ result.type_sport.libelle }}</td>
+                            <td>{{ result.type_sport.id_type_sport }}</td>
+                            <td>{{ result.nbr_sport_by_cat.nbr_sport }}</td>
+                            <td>
+                                  <a class="btn btn-outline-warning" href="/type-sport/edit?id_type_sport={{ result.type_sport.id_type_sport  }}">Edit</a>
+                                  <a class="btn btn-outline-danger" href="/type-sport/delete?id_type_sport={{ result.type_sport.id_type_sport  }}">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+                <div>
+                      <p>
+                          pas de type de sport
+                      </p>
+               </div>
+        {% endif %}
+        </section>
+    </div>
+{% endblock %}

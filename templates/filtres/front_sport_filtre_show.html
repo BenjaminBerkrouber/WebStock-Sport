@@ -1,0 +1,130 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>afficher les Sport</title>
+{% endblock %}
+
+{% block body %}
+<h1 class="title">Nos sports</h1>
+
+<br><br>
+
+
+<div class="box filtre">
+
+<div class="card" id="filtre">
+    <form class="form-group" method="post" action="/filtres/show" >
+        <article class="card-group-item">
+            <header class="card-header">
+                <h6 class="title">Vous rechercher ? </h6>
+            </header>
+            <div class="filter-content">
+                <div class="card-body">
+                    <div class="custom-control custom-checkbox">
+                        <div class="input-group mb-3">
+                            <input id="filter_word" type="text" class="form-control"  name="filter_word" size="18" value="{% if session['filter_word'] is defined %}{{ session['filter_word'] }}{% endif %}" placeholder="recherche">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+	    <article class="card-group-item">
+		    <header class="card-header">
+			    <h6 class="title">Votre prix </h6>
+		    </header>
+            <div class="filter-content">
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label>Min</label>
+                            <input  type="number" class="form-control" id="filter_prix_min" name="filter_prix_min" value="{% if session['filter_prix_min'] is defined %}{{ session['filter_prix_min'] }}{% endif %}" placeholder="min">
+                        </div>
+                        <div class="form-group col-md-6 text-right">
+                            <label>Max</label>
+                            <input type="number" class="form-control" id="filter_prix_max" name="filter_prix_max"  value="{% if session['filter_prix_max'] is defined %}{{ session['filter_prix_max'] }}{% endif %}" placeholder="max">
+                        </div>
+                    </div>
+                </div>
+            </div>
+	    </article>
+	    <article class="card-group-item">
+            <header class="card-header">
+                <h6 class="title">Votre type de sport </h6>
+            </header>
+            <div class="filter-content">
+                <div class="card-body">
+                    <div class="custom-control custom-checkbox">
+                    {% if types_sports | length >= 1 %}
+                        {% for ligne in types_sports %}
+                          <div>
+                              <input type="checkbox" name="filter_types" id="filter-type{{ ligne.libelle }}" value="{{ ligne.id_type_sport }}"
+                                      {% set id_item =  ligne.id_type_sport | string %}
+                                      {% if session['filter_types'] %}
+                                          {{ 'checked' if (id_item in session['filter_types']) else ''}}
+
+                                      {% endif %}
+                              >
+                              <label for="filter-type{{ ligne.libelle }}"> {{ ligne.libelle}} </label>
+                          </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="card-group-item">
+            <div class="filter-content" style="margin: auto; width: fit-content">
+                <input class="btn btn-primary" type="submit" value="Filtrer" name="filter" >
+                <a role="button" class="btn btn-danger" href="/filtres/clear" >Supprimer filtres</a>
+            </div>
+        </article>
+    </form>
+    </div>
+
+    <section class="filtre">
+         {% if sports | length >= 1 %}
+        <div class="inner">
+            {% for block in sports %}
+                <div class="card" style="width: 18rem;">
+                    <div class="img">
+                        <img class="illu" src="/static/images/{{ block.image }}" alt="image  de {{ block.nomSport }}">
+                    </div>
+                    <ul class="list-group list-group-flush">
+                          <li class="list-group-item">{{ block.nom_sport }}</li>
+                          <li class="list-group-item">Sport de :
+                              {% for i in types_sports %}
+                                  {% if i.id_type_sport == block.type_sport_id %}
+                                      {{ i.libelle }}
+                                  {% endif %}
+                              {% endfor %}
+                          </li>
+                          <li class="list-group-item">Inscription : {{ block.prix_inscription }}€</li>
+                          <li class="list-group-item">Possible jusqu'au : {{ block.date_limite_inscription}}</li>
+                          <li class="list-group-item">Il y à {{ block.nb_pratiquants }} participants </li>
+                    </ul>
+                  <div class="card-body">
+                      <div class="box-link">
+                          <a class="btn btn-primary" href="" >Reserver</a>
+                      </div>
+                  </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+            <div>
+                  <p>
+                      pas de sport
+                  </p>
+           </div>
+    {% endif %}
+    </section>
+</div>
+
+
+{% endblock %}
+
+

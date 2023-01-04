@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>modifier un Sport</title>
+{% endblock %}
+
+{% block body %}
+  <h1 class="title">modifier un sport</h1>
+  {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+  {% endif %}
+    <div class="box-add">
+        <form method="post" action="/sport/edit">
+            <fieldset>
+                <legend> Modifier un sport</legend>
+
+                <input type="hidden" name="id_sport" value="{{ sports[0]['id_sport'] }}" id="id">
+
+                <div class="form-group">
+                    <label for="nom_sport">Nom du sport</label>
+                    <input class="form-control" type="text" id="nom_sport" name="nom_sport" value="{{ sports[0].nom_sport }}" placeholder="{{ sports[0].nom_sport }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="type_sport_id">Catégorie:</label>
+                        <select id="type_sport_id" name="type_sport_id" class="form-control">
+                            {% for type in types_sports %}
+                                {% if type.id_type_sport == sports[0].type_sport_id %}
+                                    <option style="color: black" value="{{ type.id_type_sport }}" selected> {{ type.libelle }} </option>
+                                {% else %}
+                                    <option style="color: black" value="{{ type.id_type_sport }}"> {{ type.libelle }} </option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label for="prix_inscription">prix d'inscription:</label>
+                    <input type="number" class="form-control" id="prix_inscription" name="prix_inscription" placeholder="{{ sports[0].prix_inscription }} €" value="{{ sports[0].prix_inscription }}" required>
+                </div>
+                    <div class="form-group">
+                    <label for="date_limite_inscription">Date limite d'inscription:</label>
+                    <input type="date" class="form-control" id="date_limite_inscription" name="date_limite_inscription" value="{{ sports[0].date_limite_inscription }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="nb_pratiquants">Nombre de pratiquant</label>
+                    <input type="number" class="form-control" id="nb_pratiquants" name="nb_pratiquants" placeholder="{{ sports[0].nb_pratiquants }}" value="{{ sports[0].nb_pratiquants }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">Ajouter une illustration:</label>
+                    <input type="file" class="form-control" id="image" name="image" required>
+                </div>
+                    <div class="col-auto" style="text-align: center; margin-top: 30px;">
+                        <button type="submit" class="btn btn-primary mb-2">Modifier</button>
+                    </div>
+            </fieldset>
+        </form>
+    </div>
+{% endblock %}

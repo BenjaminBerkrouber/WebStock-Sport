@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>afficher les Sport</title>
+{% endblock %}
+
+{% block body %}
+<h1 class="title">Nos sports</h1>
+    <div class="box-btn-add">
+        <a class="btn btn-outline-success" href="/sport/add">ajouter un sport</a>
+    </div>
+<br><br>
+<div class="bbox">
+    <section>
+      {% if sports | length >= 1 %}
+        <div class="inner">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">nom</th>
+                        <th scope="col">id</th>
+                        <th scope="col">type sport (id)</th>
+                        <th scope="col">prix</th>
+                        <th scope="col">Nombre pratiquant</th>
+                        <th scope="col">date limite inscription</th>
+                        <th scope="col">image</th>
+                        <th scope="col">opération</th>
+                    </tr>
+                </thead>
+                <tbody>
+            {% for block in sports %}
+                <tr>
+                    <td>{{ block.nom_sport }}</td>
+                    <td>{{ block.id_sport }}</td>
+                    <td><em>
+
+                    {% for type_sport in types_sports %}
+                        {% if block.type_sport_id == type_sport.id_type_sport %}
+                            {{ type_sport.libelle }}
+                        {% endif %}
+                    {% endfor %}
+
+                    </em>({{ block.type_sport_id }})</td>
+                    <td>{{ block.prix_inscription }}€</td>
+                    <td>{{ block.nb_pratiquants }}</td>
+                    <td>{{ block.date_limite_inscription }}</td>
+                    <td>{{ block.image }} <img class="illu" src="/static/images/{{ block.image }}" alt="image  de {{ block.nomSport }}"></td>
+                    <td>
+                          <a class="btn btn-outline-warning" href="/sport/edit?id_sport={{ block.id_sport }}">Edit</a>
+                          <a class="btn btn-outline-danger" href="/sport/delete?id_sport={{ block.id_sport }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+            <div>
+                  <p>
+                      pas de type de sport
+                  </p>
+           </div>
+    {% endif %}
+    </section>
+</div>
+{% endblock %}
+
