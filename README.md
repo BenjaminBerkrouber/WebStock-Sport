@@ -70,13 +70,11 @@ flask --debug --app app run --host 0.0.0.0
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-[Filtre_font_exemple](https://github.com/BenjaminBerkrouber/WebStock-Sport/blob/master/src/img-filtre.jpg)
-[Sport_back_exemple](https://github.com/BenjaminBerkrouber/WebStock-Sport/blob/master/src/img-sport.jpg)
-[Etat_back_exemple](https://github.com/BenjaminBerkrouber/WebStock-Sport/blob/master/src/img-etat
-.jpg)
+![Filtre_font_exemple](https://github.com/BenjaminBerkrouber/WebStock-Sport/blob/master/src/img-filtre.jpg)
 
-![Cover](https://github.com/BenjaminBerkrouber/WebStock-Sport/blob/master/src/img-filtre.jpg)
+![Sport_back_exemple](https://github.com/BenjaminBerkrouber/WebStock-Sport/blob/master/src/img-sport.jpg)
 
+![Etat_back_exemple](https://github.com/BenjaminBerkrouber/WebStock-Sport/blob/master/src/img-etat.jpg)
 
 <!-- CONTACT -->
 ## Contact
