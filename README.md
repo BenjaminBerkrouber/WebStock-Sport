@@ -59,9 +59,8 @@ git clone https://github.com/BenjaminBerkrouber/SAE1.02
 mysql --user=yourusername --password=yourpassword --host=yourhost --database=yourbasename
 ```
 3. Copy the sql into __sql_projet.sql__ and past into the terminal
-4. Open VS Code or on other IDE
-5. Change the data of connexion into app.py of your database information
-6. Open an other terminal and execute this command
+4. Open VS Code or on other IDE and change the data of connexion into app.py of your database information
+5. Open an other terminal and execute this command
 ```
 flask --debug --app app run --host 0.0.0.0
 ```
@@ -77,9 +76,10 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@benjami_bkr](https://twitter.com/@benjami_bkr) - email
+Twitter - [@benjami_bkr](https://twitter.com/@benjami_bkr)
+email - benjamin.berkrouber@gmail.com
 
-Project Link: [https://github.com/BenjaminBerkrouber/SAE1.02](https://github.com/BenjaminBerkrouber/SAE1.02)
+Project Link: [https://github.com/BenjaminBerkrouber/SAE1.02](https://github.com/BenjaminBerkrouber/)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
