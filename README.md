@@ -45,6 +45,8 @@ This is an example of how to list things you need to use the software and how to
 ```sh
 sudo apt-get install git
 ```
+* mysql and database 
+[Guid installation](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04-fr)
 
 ### Installation
  
