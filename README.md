@@ -72,7 +72,7 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 [img](https://github.com/BenjaminBerkrouber/WebStock-Sport/blob/master/src/img-filtre.jpg)
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+![Cover](https://github.com/BenjaminBerkrouber/WebStock-Sport/blob/master/src/img-filtre.jpg)
 
 
 <!-- CONTACT -->
