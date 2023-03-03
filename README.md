@@ -15,38 +15,23 @@
 
 [Projet presentation](https://cours-info.iut-bm.univ-fcomte.fr/upload/perso/77/S1_BDD/tp_python/S1_BDD_pymysql_mini_projet_flask.html)
 
-__The Stuck Win project is the SAE1.01 & SAE1.02 project of the BUT informatique S1 department IUT Belfort Monbeillard.__
+__Ce site à pour but la gestion de stock des places dans des club sportif, et la disponibilité de ces dernier.__
 
 Création
 
-### work SAE0.1
+### work 
 
-- Display the game board
+- Create sql
 
-- Check if a pawn can be moved
+- Build a font&back office for this website
 
-- Moving a pawn
-
-- Check the end of the game and display the winner 
-
-### work SAE0.2
-
-- Design of an AI playing for the red pawns
-
-- Design two algorithms of different difficulty that can play against each other
-
-- Analyze the results of the games played
-
-### additional work SAE.101++
- 
-- Design graphical interface with the StdDraw library
-
-Here you can describe the project, why you made it and **for who you made it**, but mostly don't forget to add a screenshot like the image above AND a link to the demo like this : https://NicolasBrondin.github.io/basic-readme-template/
+- add, del and up the sport catégories and sport
 
 ### Built With
 
 * 🐙 Github
-* 💻 VS Code
+* 💻 Pycharm
+* 💻 DataGrip
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -67,13 +52,17 @@ sudo apt-get install git
 ```sh
 git clone https://github.com/BenjaminBerkrouber/SAE1.02
 ```
-2. Open VS Code
-3. Open the StuckWin.java file and execute the following command
-```sh
-javac StuckWin.java
-java StuckWin
+2. Open terminal and execute 
 ```
-
+mysql --user=yourusername --password=yourpassword --host=yourhost --database=yourbasename
+```
+3. Copy the sql into __sql_projet.sql__ and past into the terminal
+4. Open VS Code or on other IDE
+5. Change the data of connexion into app.py of your database information
+6. Open an other terminal and execute this command
+```
+flask --debug --app app run --host 0.0.0.0
+```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
